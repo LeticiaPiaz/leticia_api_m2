@@ -1,10 +1,7 @@
-// importando/instanciando a biblioteca 'express'
+// importações
 const express = require('express');
-// importando/instanciando a biblioteca 'mongoose'
 const mongoose = require('mongoose');
-// importando/instanciando a biblioteca 'body-parser'
 const bodyParser = require('body-parser');
-// importando a biblioteca de configurações
 const config = require('./config/config');
 
 // instanciando/criando o aplicativo da API para ser uma nova instância da classe 'express'
@@ -47,12 +44,14 @@ app.use(bodyParser.json());
 // importando os arquivos de rotas
 // const publicRoutes = require('./routes/public');
 const userRoutes = require('./routes/users');
+const storeRoutes = require('./routes/stores');
+const productRoutes = require('./models/product');
 
 // associando as duas instâncias de rotas ao app
 // app.use('/', publicRoutes);
 app.use('/users', userRoutes);
-app.use('/stores', userRoutes);
-app.use('/products', userRoutes);
+app.use('/stores', storeRoutes);
+app.use('/products', productRoutes);
 
 // configurando a porta em que a API ficará ouvindo
 app.listen(3000);
