@@ -1,0 +1,35 @@
+{
+  "name": "leticia_api_m1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.3.0",
+    "mongoose": "^5.12.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeticiaPiaz/leticia_api_m1.git"
+  },
+  "keywords": [
+    "node",
+    "api",
+    "rest",
+    "mongoose",
+    "express"
+  ],
+  "author": "Leticia Piaz Reichardt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeticiaPiaz/leticia_api_m1/issues"
+  },
+  "homepage": "https://github.com/LeticiaPiaz/leticia_api_m1#readme"
+}

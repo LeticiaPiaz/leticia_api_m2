@@ -1,0 +1,24 @@
+const jwt = require('jsonwebtoken');
+const config = require('../config/config');
+
+// criando o middleware para a autenticação
+const auth = (req, res, next) => {
+    const tokenHeader = req.headers.auth;
+    if (!tokenHeader)
+        return res.send({ error: 'Token não recebido!' });
+    jwt.verify(
+        tokenHeader,
+        // fazendo a importação da variável de ambiente que possui a chave para o token
+        config.jwtPass,
+        (err, decoded) => {
+            // se ocorrer erro na verificação do token
+            if (err)
+                return res.send({ error: 'Token inválido!' });
+            // caso o token seja válido
+            res.locals.authData = decoded;
+            return next();
+        } 
+    );
+};
+
+module.exports = auth;
