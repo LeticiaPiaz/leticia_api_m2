@@ -12,4 +12,4 @@ const storeSchema = new Schema({
     created: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Product', storeSchema);
+module.exports = mongoose.model('Store', storeSchema);
