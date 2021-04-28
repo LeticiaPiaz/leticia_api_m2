@@ -45,7 +45,7 @@ app.use(bodyParser.json());
 // const publicRoutes = require('./routes/public');
 const userRoutes = require('./routes/users');
 const storeRoutes = require('./routes/stores');
-const productRoutes = require('./models/product');
+const productRoutes = require('./routes/products');
 
 // associando as duas instâncias de rotas ao app
 // app.use('/', publicRoutes);
