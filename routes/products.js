@@ -21,8 +21,8 @@ router.post('/create',  async (req,res) => {
     const { nome, tipo, marca, preco, foto } = req.body;
     if (!nome || !marca || !preco) 
         return res.send({ error: 'Verifique se todos os campos obrigatórios foram informados! '});
-    if (preco >= 0)
-        return res.send({ error: 'O preço não pode ser zero ou menor que 0!'})
+    // if (preco >= 0)
+    //     return res.send({ error: 'O preço não pode ser zero ou menor que 0!'})
     try {
         const product = await Products.create(req.body);
     }catch (err) {

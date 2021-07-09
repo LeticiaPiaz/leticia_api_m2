@@ -6,19 +6,19 @@ const config = () => {
     switch (env) {
         case 'dev' :
             return {
-                dbString : 'mongodb+srv://cluster0:bolobala1@cluster0.enfdp.mongodb.net/demobile_m1',
+                dbString : 'mongodb+srv://cluster0:bolobala1@cluster0.enfdp.mongodb.net/demobile_m2',
                 jwtPass : 'starwarsémelhorquestartrek',
                 jwtExpires : '1d'
             }
         case 'hml' :
             return {
-                dbString : 'mongodb+srv://cluster0:bolobala1@cluster0.enfdp.mongodb.net/demobile_m1',
+                dbString : 'mongodb+srv://cluster0:bolobala1@cluster0.enfdp.mongodb.net/demobile_m2',
                 jwtPass : 'starwarsémelhorquestartrek',
                 jwtExpires : '1d'
             }
         case 'prod' :
             return {
-                dbString : 'mongodb+srv://cluster0:bolobala1@cluster0.enfdp.mongodb.net/demobile_m1',
+                dbString : 'mongodb+srv://cluster0:bolobala1@cluster0.enfdp.mongodb.net/demobile_m2',
                 jwtPass : 'starwarsémelhorquestartrek',
                 jwtExpires : '1d'
             }

@@ -17,6 +17,18 @@ const config = require('../config/config');
         { expiresIn: config.jwtExpires });
 };
 
+// criando o endpoint para listar todo os usuários
+router.get('/',  async (req,res) => {
+    try {
+        // criando um objeto para receber os usuários
+        const users = await Users.find({});
+        return res.send(users);
+    }
+    catch (err) {
+        return res.status(500).send({ error: 'Erro na busca dos usuários!' });
+    }
+});
+
 // criando o endpoint para autenticar na API
 router.post('/auth', (req,res) => {//OK
     const { login, senha } = req.body;
@@ -42,13 +54,14 @@ router.post('/auth', (req,res) => {//OK
 
 // criando o endpoint para salvar usuário
 router.post('/create',  async (req,res) => {//OK
-    const { nome, sobrenome, nascimento, login, senha, dica_de_senha, cidade, estado } = req.body;
-    if (!nome || !sobrenome || !nascimento || !login || !senha) 
+    const { name, userName, email, phone, password } = req.body;
+    console.log("Chega aqui");
+    if (!name || !userName || !email || !phone || !password) 
         return res.send({ error: 'Verifique se todos os campos obrigatórios foram informados! '});
     try {
-        // verificando se o login já está cadastrado
-        if (await Users.findOne({ login }))
-                return res.send({ error: 'Login já cadastrado! '});
+        // verificando se o userName já está cadastrado
+        if (await Users.findOne({ userName }))
+                return res.send({ error: 'Nome de usuário já cadastrado! '});
         // se o usuário ainda nao for cadastrado
         const user = await Users.create(req.body);
         // impedindo o retorno da senha
@@ -61,12 +74,12 @@ router.post('/create',  async (req,res) => {//OK
 });
 
 // criando o endpoint para alterar usuário
-router.put('/update/:id', auth, async (req,res) => {
+router.put('/update/:id', async (req,res) => {
     // loginOld = await longin.Users.findOne(id);
     // loginOld = await login.Users.findById(req.params.id);
     // console.log(loginOld);
-    const { nome, sobrenome, nascimento, login, senha, dica_de_senha, cidade, estado } = req.body;
-    if (!nome || !sobrenome || !nascimento || !login || !senha) 
+    const { name, userName, email, phone, password } = req.body;
+    if (!name || !userName || !email || !phone || !password) 
         return res.send({ error: 'Verifique se todos os campos obrigatórios foram informados! '});
     try {
         // verificando se há um novo login e se ouver verificando se já não está cadastrado
@@ -87,7 +100,7 @@ router.put('/update/:id', auth, async (req,res) => {
 });
 
 // criando o endpoint para apagar usuário
-router.delete('/delete/:id', auth, async (req,res) => {//OK
+router.delete('/delete/:id', async (req,res) => {//OK
     try {
         await Users.findByIdAndDelete(req.params.id);
         return res.send({ error: 'Usuário removido com sucesso!' });

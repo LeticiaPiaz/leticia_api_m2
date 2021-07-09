@@ -5,25 +5,22 @@ const bcrypt = require('bcrypt');
 
 // criação do 'schema' para o usuário
 const userSchema = new Schema({
-    nome: { type: String, required: true},
-    sobrenome: {type: String, required: true},
-    nascimento: {type: String, required: true},
-    login: { type: String, required: true, unique: true},
-    senha: { type: String, required: true, select: false},
-    dica_de_senha: {type: String},
-    cidade: { type: String},
-    estado: { type: String},
+    name: { type: String, required: true},
+    userName: { type: String, required: true, unique: true},
+    email: { type: String, required: true},
+    phone: { type: String, required: true},
+    password: { type: String, required: true, select: false},
     created: { type: Date, default: Date.now }
 });
 
 // criando uma nova função para preparar os campos
 userSchema.pre('save', async function (next) {
     let user = this;
-    // testando se o campo de senha foi modificado
-    if (!user.isModified('senha'))
+    // testando se o campo de password foi modificado
+    if (!user.isModified('password'))
         return next();
-    // criando o hash para o campo senha
-    user.senha = await bcrypt.hash(user.senha, 10);
+    // criando o hash para o campo password
+    user.password = await bcrypt.hash(user.password, 10);
     return next();
 });
 

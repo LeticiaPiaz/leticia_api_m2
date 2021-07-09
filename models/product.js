@@ -7,7 +7,7 @@ const productSchema = new Schema({
     nome: { type: String, required: true},
     tipo: {type: String},
     marca: {type: String, required: true},
-    preco: { type: String, required: true},
+    preco: { type: Number, required: true},
     foto: {type: String},
     created: { type: Date, default: Date.now }
 });
